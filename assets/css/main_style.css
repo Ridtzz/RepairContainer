@@ -1,0 +1,926 @@
+/* Общие стили */
+body {
+    font-family: 'Furore', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1e1e1e;
+    color: #fff;
+    line-height: 1.6;
+    padding-top: 140px; /* Должно соответствовать высоте header */
+}
+
+.container {
+    width: 75%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: justify-content 0.3s ease-in-out;
+}
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #1e1e1e;
+    padding: 10px 0;
+    z-index: 100;
+    transition: box-shadow 0.3s ease-in-out; /* Плавный эффект */
+}
+
+
+
+.brand {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+
+}
+
+.brand:hover {
+    transform: scale(1.05);
+}
+.brand a {
+    text-decoration: none;
+    color: inherit; /* Чтобы цвет ссылки совпадал с цветом текста */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+nav ul li {
+    display: inline-block;
+}
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px;
+    display: inline-block;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid transparent; /* Начально невидимая граница */
+    border-radius: 45px; /* Скругление углов */
+}
+
+nav ul li a:hover {
+    border-color: #ffffff; /* Показываем границу при наведении */
+    background-color: rgba(255, 255, 255, 0.1); /* Легкий фон при наведении */
+    letter-spacing: 4px;
+}
+
+nav ul li a:not(:hover) {
+    letter-spacing: 0px; /* Плавное возвращение текста */
+}
+
+/* Дополнительно: изменение цвета иконки при наведении */
+.services-link:hover .service-icon {
+    transform: scale(1.3);
+    top: -15px;
+    right: -15px;
+    
+}
+
+.service-icon {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 14px; /* Размер иконки */
+    color: #f9c638; /* Цвет иконки */
+    pointer-events: none; /* Чтобы не мешала кликам по ссылке */
+    transition: all 0.3s ease-in-out;
+    letter-spacing: 4px;
+
+}
+
+nav ul li a {
+    display: flex;
+    flex-direction: column; /* Размещаем элементы в колонку */
+    align-items: center; /* Центрируем текст и иконку */
+}
+
+
+/* Бургер-меню */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.burger-menu span {
+    width: 30px;
+    height: 4px;
+    background: #ffffff;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+
+/* SCROLLED HEADER */
+/* Класс, который добавляется при скролле */
+header.scrolled {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* END HEADER */
+
+
+iframe {
+    width: 100%;
+    height: 550px; /* Высота на весь экран */
+    pointer-events: none; /* Блокирует все взаимодействия */
+}
+
+
+
+section {
+    padding: 100px 0;
+    text-align: center;
+}
+/* ABOUT SECTION */
+
+/* Основной контейнер */
+#about-container {
+    display: flex;
+    flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку */
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+    padding: 100px 0 0;
+}
+
+/* Левая часть (слайдер) */
+.about-left {
+    width: 25%;
+    height: 550px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 40px;
+    transition: all 0.3s ease-in-out;
+}
+
+.about-left:hover .slide {
+    transform: scale(1.1);
+}
+
+.about-left:hover{
+ box-shadow: 0 20px 30px rgba(0, 0, 0, 0.8);
+ border-radius: 60px;
+}
+.slider {
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Обрезает изображение, сохраняя пропорции */
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transition: all 0.7s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* Правая часть (Текст) */
+.about-right {
+    width: 50%;
+    display: flex;
+    align-items: center; /* Выравниваем текст-контейнер по центру */
+    justify-content: center; /* По желанию, можно использовать flex-start для прижатия к левому краю */
+}
+
+.text-container {
+    width: 100%; /* Теперь текст занимает всю доступную ширину */
+    text-align: left; /* Текст выровнен по левому краю */
+    max-width: 500px;
+    opacity: 0;
+    transform: scale(1.3) ;
+    transition: opacity 0.8s ease-out, transform 0.6s ease-out;
+}
+
+.text-container.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+.text-container h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    text-align: center;
+    text-shadow: 0 10px 10px rgba(0, 0, 0, 1.0);
+}
+
+h2 i {
+    margin-left: 20px; /* Отступ между текстом и иконкой */
+}
+
+.text-container p {
+    font-size: 1.52rem;
+    line-height: 1.3;
+    transition: all 0.6s ease;
+}
+
+.text-container p:hover {
+text-shadow: 0 10px 10px rgba(0, 0, 0, 0.7);
+}
+
+/* Новый контейнер (на всю ширину) */
+..about-full {
+    width: 100%;
+    padding: 50px 10%;
+    text-align: center;
+    background: #111; /* Цвет фона можно менять */
+    border-radius: 20px;
+    margin-top: 50px;
+}
+
+.about-full h2 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Блок преимуществ */
+.advantages {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Отступ между пунктами */
+    align-items: center;
+}
+
+/* Отдельный пункт */
+.advantage {
+    display: flex;
+    align-items: center; /* Центрируем текст по вертикали */
+    justify-content: center; /* Центрируем содержимое */
+    gap: 15px; /* Расстояние между иконкой и текстом */
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 20px;
+    border-radius: 15px;
+    width: 60%;
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+    text-align: center; /* Центрируем текст */
+}
+
+
+/* Иконки */
+.advantage i {
+    font-size: 2.3rem;
+    color: #ffcc00;
+    transition: all 0.8s ease-in-out;
+    margin: 0 20px;
+}
+
+/* Текст */
+.advantage p {
+    font-size: 1.5rem;
+    color: #ddd;
+    text-align: left;
+    letter-spacing: 1px;
+}
+
+/* Эффект при наведении */
+.advantage:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.advantage:hover i {
+    transform: rotateY(360deg) scale(1.2);
+
+}
+
+/* brands line */
+.brand-line {
+    text-align: center;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.brand-slider {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+    width: 100%;
+    max-width: 71rem;
+    padding: 60px 0;
+}
+
+.brand-track {
+    display: flex;
+    animation: scroll 20s linear infinite;
+    gap: 40px;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%); /* Половина ширины брендов */
+    }
+}
+
+.brand-line h2 {
+    font-size: 3rem;
+    letter-spacing: 6px;
+}
+
+.brand-track img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.brand-slider::before,
+.brand-slider::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.brand-slider::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
+.brand-slider::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
+.brand-track img[alt="Asus"] {
+    filter: brightness(0.2);
+}
+
+.brand-track img[alt="Apple"] {
+    margin: 0 30px 0 40px;
+}
+
+
+
+
+
+
+
+/* END ABOUT */
+
+
+                                                            /* SERVISES SECTION */
+
+#services-container {
+    padding: 0  12.5% 50px;
+    background-color: #1e1e1e;
+    
+}
+
+.services-text {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.services-text h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+.services-text p {
+    font-size: 18px;
+    color: #fff;
+}
+
+.services-list {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.services-list li {
+    margin-bottom: 15px;
+    background: #333;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease-in-out;
+    opacity: 0; /* Изначально скрыто */
+    transform: translateX(-200px); /* Сдвигаем элементы влево */
+}
+
+.services-list li.visible {
+    opacity: 1; /* Элемент становится видимым */
+    transform: translateX(0); /* Элемент возвращается на место */
+}
+
+.services-list li:hover {
+    transform: scale(1.01);
+    background: #444;
+    cursor: pointer;
+}
+
+.services-list h3 {
+    font-size: 26px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center; /* Центрируем текст */
+    align-items: center;
+    position: relative;
+    transition: all 0.5s ease-in-out;
+}
+
+.services-list h3 span {
+    display: inline-block; /* Чтобы letter-spacing применялся только к тексту */
+    transition: letter-spacing 0.3s ease;
+}
+
+.services-list h3.expanded span {
+    letter-spacing: 4px; /* Применяем letter-spacing только к тексту */
+}
+
+.services-list li:hover h3 {
+    text-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Делаем иконку абсолютной, чтобы она не мешала центровке текста */
+.toggle-icon {
+    font-size: 40px;
+    color: #f9c638;
+    transition: all 0.3s ease-in-out; /* Плавная анимация */
+    position: absolute;
+    right: 0;
+}
+
+.toggle-icon:hover {
+    transform: scale(1.2);
+}
+
+/* Добавляем анимацию поворота */
+.toggle-icon.rotate {
+    transform: rotate(45deg);
+    color: #000 ;
+}
+
+.toggle-icon.rotate:hover {
+    transform: scale(1.2) rotate(45deg);;
+}
+
+.service-description {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.7s ease-in-out, opacity 0.7s ease-in-out;
+
+}
+
+.service-description.show {
+    max-height: 500px; /* Достаточно большое значение, чтобы вместить текст */
+    opacity: 1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.full-services-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.full-services-button {
+    position: relative;
+    overflow: hidden;
+    padding: 25px 30px;
+    font-size: 28px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.6s ease-in-out;
+    border: 1px solid #000;
+    font-family: 'Furore', sans-serif;
+    text-align: center;
+    z-index: 1;
+}
+
+/* Эффект заполнения */
+.full-services-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(350deg, rgba(232,188,111,1) 17%, rgba(249,198,56,1) 52%, rgba(238,255,132,1) 92%);
+
+
+    transition: left 0.6s ease-in-out;
+    z-index: -1; /* Убираем под текст */
+}
+
+/* Эффект движения фона */
+.full-services-button:hover::before {
+    left: 0;
+}
+
+/* Меняем цвет текста при наведении */
+.full-services-button:hover {
+    color: #000;
+    letter-spacing: 2px;
+}
+
+
+/* modal section */
+
+
+/* Основной стиль модального окна */
+.modal {
+    visibility: hidden; /* Начальное состояние — скрыто */
+    opacity: 0; /* Начальная прозрачность */
+    position: fixed; /* Окно фиксируется на экране */
+    z-index: 200; /* Поверх остальных элементов */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    display: flex; /* Используем Flexbox для выравнивания */
+    justify-content: center; /* Выравнивание по горизонтали */
+    align-items: center; /* Выравнивание по вертикали */
+    transition: visibility 0s 0.3s, opacity 0.3s ease; /* Анимация для visibility и opacity */
+}
+
+/* Когда модальное окно активно */
+.modal.active {
+    visibility: visible; /* Окно становится видимым */
+    opacity: 1; /* Окно полностью непрозрачно */
+    transition: opacity 0.3s ease; /* Плавная анимация */
+}
+
+/* Контент внутри модального окна */
+.modal-content {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    width: 75%;
+    color: #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative; /* Для абсолютного позиционирования крестика */
+    align-items: center; /* Центрируем содержимое по горизонтали */
+    justify-content: center; /* Центрируем по вертикали, если нужно */
+    text-align: center; /* Центрируем текст внутри элемента */
+}
+.modal-content h3 {
+    font-size: 40px;
+    letter-spacing: 5px;
+    color: #fff;
+    padding: 0 0 15px;
+    margin-bottom: 0px;
+}
+
+/* Кнопка закрытия */
+.close {
+    color: #fff;
+    font-size: 46px;
+    font-weight: bold;
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    transform: scale(1.2);
+}
+
+
+
+/* Социальные сети */
+.social-media ul {
+    list-style: none;
+    padding: 15px 0 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.social-media ul li {
+    margin: 5px 0;
+}
+
+.social-media a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 40px;
+    transition: all 0.3s ease-in-out;
+    display: inline-block; /* Чтобы scale работал корректно */
+}
+
+.social-media a:hover {
+  color: #000;
+  transform: scale(1.2);
+}
+
+/* Уникальные псевдоэлементы для каждой соцсети */
+.social-media li:nth-child(1) a::after { content: "Telegram"; }
+.social-media li:nth-child(2) a::after { content: "Instagram"; }
+.social-media li:nth-child(3) a::after { content: "VK"; }
+.social-media li:nth-child(4) a::after { content: "WhatsApp"; }
+
+/* Общие стили для появляющегося текста */
+.social-media a::after {
+    position: absolute;
+    left: 50%;
+    bottom: 75%;
+    transform: translateX(-50%) translateY(5px);
+    margin-bottom: 8px; /* Отступ между иконкой и текстом */
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Показ текста при наведении */
+.social-media a:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Контактные данные (телефон, email, адрес) */
+.contact-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.contact-info i {
+    margin-right: 10px;
+}
+
+.contact-info p {
+    margin: 5px 0;
+    font-size: 18px;
+    color: #fff;
+}
+
+/* Карта на всю ширину модального окна */
+.contact-map {
+    margin-top: 20px;
+    width: 100%;
+    opacity: 0.8;
+    transition: all 0.4s ease;
+}
+
+.contact-map:hover {
+    opacity: 1;
+}
+
+.modal iframe {
+    width: 100%;
+    height: 300px;
+    border-radius: 40px;
+    border: solid 1px #888;
+    pointer-events: all;
+}
+
+/* Стили для мобильных устройств */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 90%;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-map iframe {
+        height: 250px;
+    }
+}
+
+
+/* END SERVICES */
+
+footer {
+    background-color: #1e1e1e;
+    color: #fff;
+    padding: 40px 0;
+
+}
+
+footer .container {
+    display: flex;
+    flex-direction: column; /* Режим колонки, чтобы элементы шли друг под другом */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+footer .footer-left {
+    margin-top: 20px;
+    text-align: center;
+}
+
+footer .footer-center {
+    text-align: center;
+}
+
+footer .footer-center h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+footer .social-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    position: relative;
+
+}
+
+footer .social-links li {
+    position: relative;
+    transition: transform 0.5s ease-in-out; /* Плавная анимация в обе стороны */
+}
+
+footer .social-links li a {
+    color: #fff;
+    font-size: 2.5rem;
+    transition: all 0.4s ease-in-out; /* Плавность в обе стороны */
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Убирает подчёркивание */
+}
+
+footer .social-links li a:hover {
+    color: #000;
+ text-shadow: 0px 0px 25px rgba(255, 255, 255, 1.0); /* Идеально круглая светлая тень */
+}
+
+/* Добавляем невидимый хитбокс */
+footer .social-links li a::before {
+    content: "";
+    position: absolute;
+    width: 80px;  /* Расширяем область наведения */
+    height: 80px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+}
+
+/* Всплывающий текст справа */
+footer .social-links li a::after {
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%) translateX(10px);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1s ease-in-out;
+}
+@keyframes fadeIn {
+    0% { opacity: 0;  }
+    100% { opacity: 1;  }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1;  }
+    100% { opacity: 0;  }
+}
+
+
+/* Уникальные подписи для соцсетей */
+footer .social-links li:nth-child(1) a::after { content: "Instagram"; }
+footer .social-links li:nth-child(2) a::after { content: "Telegram"; }
+footer .social-links li:nth-child(3) a::after { content: "VK"; }
+footer .social-links li:nth-child(4) a::after { content: "WhatsApp"; }
+
+footer .social-links li a:hover::after {
+    visibility: visible;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+footer .social-links li a:not(:hover)::after {
+    animation: fadeOut 0.1s ease-in-out forwards;
+}
+
+footer .footer-left p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Стили для кнопки "Наверх" */
+.scroll-to-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #666;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;         /* Кнопка невидима по умолчанию */
+    pointer-events: none; /* Запрещаем взаимодействие, пока кнопка скрыта */
+    transition: all 0.4s ease-in-out; /* Плавный переход для opacity */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.scroll-to-top-btn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+
+
+
+
+
+
+/* END footer */
+
+
+/* Адаптивное меню */
+@media (max-width: 768px) {
+    .burger-menu {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: #1e1e1e;
+        width: 200px;
+        text-align: center;
+        border-radius: 10px;
+        padding: 10px 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+

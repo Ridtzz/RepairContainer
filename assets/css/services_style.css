@@ -1,0 +1,380 @@
+/* Общие стили */
+body {
+    font-family: 'Furore', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1e1e1e;
+    color: #fff;
+    line-height: 1.6;
+    padding-top: 60px; /* Должно соответствовать высоте header */
+}
+
+.container {
+    width: 75%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: justify-content 0.3s ease-in-out;
+}
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #1e1e1e;
+    padding: 10px 0;
+    z-index: 100;
+    transition: box-shadow 0.3s ease-in-out; /* Плавный эффект */
+}
+
+
+
+.brand {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+
+}
+
+.brand:hover {
+    transform: scale(1.05);
+}
+.brand a {
+    text-decoration: none;
+    color: inherit; /* Чтобы цвет ссылки совпадал с цветом текста */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+nav ul li {
+    display: inline-block;
+}
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px;
+    display: inline-block;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid transparent; /* Начально невидимая граница */
+    border-radius: 45px; /* Скругление углов */
+}
+
+nav ul li a:hover {
+    border-color: #ffffff; /* Показываем границу при наведении */
+    background-color: rgba(255, 255, 255, 0.1); /* Легкий фон при наведении */
+    letter-spacing: 4px;
+}
+
+nav ul li a:not(:hover) {
+    letter-spacing: 0px; /* Плавное возвращение текста */
+}
+
+
+
+/* Бургер-меню */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.burger-menu span {
+    width: 30px;
+    height: 4px;
+    background: #ffffff;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+
+/* SCROLLED HEADER */
+/* Класс, который добавляется при скролле */
+header.scrolled {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* END HEADER */
+
+/* Основной стиль модального окна */
+.modal {
+    visibility: hidden; /* Начальное состояние — скрыто */
+    opacity: 0; /* Начальная прозрачность */
+    position: fixed; /* Окно фиксируется на экране */
+    z-index: 200; /* Поверх остальных элементов */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    display: flex; /* Используем Flexbox для выравнивания */
+    justify-content: center; /* Выравнивание по горизонтали */
+    align-items: center; /* Выравнивание по вертикали */
+    transition: visibility 0s 0.3s, opacity 0.3s ease; /* Анимация для visibility и opacity */
+}
+
+/* Когда модальное окно активно */
+.modal.active {
+    visibility: visible; /* Окно становится видимым */
+    opacity: 1; /* Окно полностью непрозрачно */
+    transition: opacity 0.3s ease; /* Плавная анимация */
+}
+
+/* Контент внутри модального окна */
+.modal-content {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    width: 75%;
+    color: #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative; /* Для абсолютного позиционирования крестика */
+    align-items: center; /* Центрируем содержимое по горизонтали */
+    justify-content: center; /* Центрируем по вертикали, если нужно */
+    text-align: center; /* Центрируем текст внутри элемента */
+}
+.modal-content h3 {
+    font-size: 40px;
+    letter-spacing: 5px;
+    color: #fff;
+    padding: 0 0 15px;
+    margin-bottom: 0px;
+}
+
+/* Кнопка закрытия */
+.close {
+    color: #fff;
+    font-size: 46px;
+    font-weight: bold;
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    transform: scale(1.2);
+}
+
+
+
+/* Социальные сети */
+.social-media ul {
+    list-style: none;
+    padding: 15px 0 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.social-media ul li {
+    margin: 5px 0;
+}
+
+.social-media a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 40px;
+    transition: all 0.3s ease-in-out;
+    display: inline-block; /* Чтобы scale работал корректно */
+}
+
+.social-media a:hover {
+  color: #000;
+  transform: scale(1.2);
+}
+
+/* Уникальные псевдоэлементы для каждой соцсети */
+.social-media li:nth-child(1) a::after { content: "Telegram"; }
+.social-media li:nth-child(2) a::after { content: "Instagram"; }
+.social-media li:nth-child(3) a::after { content: "VK"; }
+.social-media li:nth-child(4) a::after { content: "WhatsApp"; }
+
+/* Общие стили для появляющегося текста */
+.social-media a::after {
+    position: absolute;
+    left: 50%;
+    bottom: 75%;
+    transform: translateX(-50%) translateY(5px);
+    margin-bottom: 8px; /* Отступ между иконкой и текстом */
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Показ текста при наведении */
+.social-media a:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Контактные данные (телефон, email, адрес) */
+.contact-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.contact-info i {
+    margin-right: 10px;
+}
+
+.contact-info p {
+    margin: 5px 0;
+    font-size: 18px;
+    color: #fff;
+}
+
+/* Карта на всю ширину модального окна */
+.contact-map {
+    margin-top: 20px;
+    width: 100%;
+    opacity: 0.8;
+    transition: all 0.4s ease;
+}
+
+.contact-map:hover {
+    opacity: 1;
+}
+
+.modal iframe {
+    width: 100%;
+    height: 300px;
+    border-radius: 40px;
+    border: solid 1px #888;
+    pointer-events: all;
+}
+
+/* EDN MODAL */
+
+/* Стили для кнопки "Наверх" */
+.scroll-to-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #666;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;         /* Кнопка невидима по умолчанию */
+    pointer-events: none; /* Запрещаем взаимодействие, пока кнопка скрыта */
+    transition: all 0.4s ease-in-out; /* Плавный переход для opacity */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.scroll-to-top-btn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Стили для страницы услуг */
+   #services-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 80px;
+    }
+
+    .services-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+.services-toggle-container {
+    cursor: pointer;
+    background-color: #333;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+    width: 250px; /* Фиксированная ширина */
+    height: 50px; /* Фиксированная высота */
+    font-size: 18px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px auto; /* Центрирование кнопки */
+    transition: all 0.3s ease-in-out;
+}
+
+    .services-toggle-container:hover {
+        background-color: #444;
+    }
+
+    .services-table {
+        height: 0;
+        opacity: 0;
+        transform: translateY(-20px);
+        visibility: hidden;
+        transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s 0.5s;
+        width: 75%;
+        margin: 0 auto;
+    }
+
+    .services-table.open {
+        height: auto;
+        opacity: 1;
+        transform: translateY(1rem);
+        visibility: visible;
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        margin: 0px auto 30px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #222;
+        color: #d0d0d0;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    thead {
+        color: #fff;
+    }
+
+    th, td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #444;
+        transition: all 0.2s ease-in-out;
+    }
+
+    th {
+        background-color: #333;
+        font-size: 18px;
+    }
+
+    tbody tr:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        transition: all 0.2s ease-in-out;
+    }
